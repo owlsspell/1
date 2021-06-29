@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import CountryCardsContainer from "./component/CountryCards/CountryCardsContainer";
+import InputSearchContainer from "./component/Input/InputSearchContainer";
+import CountryPageContainer from "./component/CountryPage/CountryPageContainer";
 
-function App() {
+const App = (props) => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Route
+          path="/card/:nameCountry"
+          render={() => <CountryPageContainer />}
+        />
+        <Route
+          path="/country"
+          render={() => (
+            <div>
+              <InputSearchContainer />
+              <CountryCardsContainer />
+            </div>
+          )}
+        />
+        <Route exact path="/">
+          <Redirect to="/country" />
+        </Route>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
