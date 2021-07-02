@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+}
+
+.inputField {
+  padding: 5px 10px;
+  margin: 10px;
+  border: none;
+  border-bottom: black 1px solid;
+}
